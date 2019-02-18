@@ -4,7 +4,9 @@ project(cpp-fmus)
 option(FMU_USE_STATIC_RUNTIME
     "Whether to link the model code against a static C(++) runtime library"
     ON)
-set(FMU_BUILD_DIR "${CMAKE_BINARY_DIR}/fmu-build"
+set(FMU_OUTPUT_DIR "${CMAKE_BINARY_DIR}"
+    CACHE PATH "Where to put the generated FMUs")
+set(FMU_STAGING_DIR "${CMAKE_BINARY_DIR}/fmu-staging"
     CACHE PATH "Where to put the generated FMU contents before zipping")
 set(FMU_UUID_DIR "${CMAKE_BINARY_DIR}/fmu-uuids"
     CACHE PATH "Where to put the headers containing FMU UUIDs")
@@ -51,7 +53,7 @@ endif()
 # ==============================================================================
 
 # List CPPFMU sources
-file(GLOB cppfmuSources "${CMAKE_SOURCE_DIR}/cppfmu/*.?pp")
+file(GLOB cppfmuSourceFiles "${CMAKE_SOURCE_DIR}/cppfmu/*.?pp")
 
 # Detect platform
 if("${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
@@ -64,77 +66,80 @@ else()
     message(FATAL_ERROR "Unknown or unsupported platform: ${CMAKE_SYSTEM_NAME}")
 endif()
 math(EXPR wordSize 8*${CMAKE_SIZEOF_VOID_P})
-set(fmuPlatform "${os}${wordSize}")
+set(platformIdentifier "${os}${wordSize}")
 
-# Prepare names for FMU output directories.
+# Prepare names for FMU staging directories.
 if(CMAKE_CONFIGURATION_TYPES)
-    set(fmuFullBuildDir "${FMU_BUILD_DIR}/$<CONFIGURATION>")
+    set(configStagingDir "${FMU_STAGING_DIR}/$<CONFIGURATION>")
 else()
-    set(fmuFullBuildDir "${FMU_BUILD_DIR}")
+    set(configStagingDir "${FMU_STAGING_DIR}")
 endif()
 
 # Create targets
-set(fmuIncludeDirs
-    "${CMAKE_SOURCE_DIR}/fmi"
-    "${CMAKE_SOURCE_DIR}/cppfmu"
+set(includeDirs
 )
 foreach(fmuName IN LISTS fmus)
-    set(dlTarget "${fmuName}")
-    set(uuidTarget "${fmuName}_uuid")
+    set(fmuLibraryTarget "${fmuName}")
+    set(fmuGuidTarget "${fmuName}_guid")
     set(fmuTarget "${fmuName}_fmu")
-    set(outputFmu "${CMAKE_BINARY_DIR}/${fmuName}.fmu")
-    set(uuidDir "${FMU_UUID_DIR}/${fmuName}")
-    set(sourceDir "${CMAKE_SOURCE_DIR}/src/${fmuName}")
-    set(outputDir "${fmuFullBuildDir}/${fmuName}")
-    set(binariesDir "${outputDir}/binaries/${fmuPlatform}")
-    set(sourceModelDescription "${sourceDir}/modelDescription.xml")
-    set(sourceFiles "${sourceDir}/sources/fmu.cpp")
 
-    # Target to generate UUID
-    set(outputModelDescription "${uuidDir}/modelDescription.xml")
-    set(outputUuidHeader "${uuidDir}/fmu-uuid.h")
+    set(fmuSourceDir "${CMAKE_SOURCE_DIR}/src/${fmuName}")
+    set(fmuSourceModelDescription "${fmuSourceDir}/modelDescription.xml")
+    set(fmuSourceFiles "${fmuSourceDir}/sources/fmu.cpp")
+
+    set(fmuGuidDir "${FMU_UUID_DIR}/${fmuName}")
+    set(fmuGuidModelDescription "${fmuGuidDir}/modelDescription.xml")
+    set(fmuGuidHeaderFile "${fmuGuidDir}/fmu-uuid.h")
+
+    set(fmuStagingDir "${configStagingDir}/${fmuName}")
+    set(fmuStagedBinariesDir "${fmuStagingDir}/binaries/${platformIdentifier}")
+
+    set(fmuOutputFile "${FMU_OUTPUT_DIR}/${fmuName}.fmu")
+
+    # Target to generate GUID
     add_custom_command(
-        OUTPUT "${outputModelDescription}" "${outputUuidHeader}"
+        OUTPUT "${fmuGuidModelDescription}" "${fmuGuidHeaderFile}"
         COMMAND
-        "${CMAKE_COMMAND}" "-E" "make_directory" "${uuidDir}"
+        "${CMAKE_COMMAND}" "-E" "make_directory" "${fmuGuidDir}"
         COMMAND
             "${CMAKE_COMMAND}"
-            "-DINPUT_MODEL_DESCRIPTION=${sourceModelDescription}"
+            "-DINPUT_MODEL_DESCRIPTION=${fmuSourceModelDescription}"
             "-DINPUT_HEADER=${CMAKE_SOURCE_DIR}/cmake/fmu-uuid.h.in"
-            "-DOUTPUT_MODEL_DESCRIPTION=${outputModelDescription}"
-            "-DOUTPUT_HEADER=${outputUuidHeader}"
-            "-DADDITIONAL_INPUT=${sourceFiles}"
+            "-DOUTPUT_MODEL_DESCRIPTION=${fmuGuidModelDescription}"
+            "-DOUTPUT_HEADER=${fmuGuidHeaderFile}"
+            "-DADDITIONAL_INPUT=${fmuSourceFiles}"
             "-P" "${CMAKE_SOURCE_DIR}/cmake/GenerateFmuGuid.cmake"
-        DEPENDS "${sourceModelDescription}"
+        DEPENDS "${fmuSourceModelDescription}"
         VERBATIM
     )
-    add_custom_target(${uuidTarget}
-        DEPENDS "${outputModelDescription}" "${outputUuidHeader}"
+    add_custom_target(${fmuGuidTarget}
+        DEPENDS "${fmuGuidModelDescription}" "${fmuGuidHeaderFile}"
     )
 
     # Target to build dynamic library
-    add_library(${dlTarget} MODULE
-        ${sourceFiles}
-        ${cppfmuSources}
-        "${sourceModelDescription}"
+    add_library(${fmuLibraryTarget} MODULE
+        "${fmuSourceModelDescription}"
+        ${fmuSourceFiles}
+        ${cppfmuSourceFiles}
     )
-    add_dependencies(${dlTarget} ${uuidTarget})
-    target_compile_definitions(${dlTarget} PRIVATE
-        "MODEL_IDENTIFIER=${fmuName}")
-    target_include_directories(${dlTarget} PRIVATE "${uuidDir}" ${fmuIncludeDirs})
+    add_dependencies(${fmuLibraryTarget} ${fmuGuidTarget})
+    target_include_directories(${fmuLibraryTarget} PRIVATE
+        "${CMAKE_SOURCE_DIR}/fmi"
+        "${CMAKE_SOURCE_DIR}/cppfmu"
+        "${fmuGuidDir}"
+    )
 
     # Target to generate FMU contents
-    set(ruleName "${fmuName}-contents")
-    add_custom_command(OUTPUT "${outputFmu}"
-        COMMAND "${CMAKE_COMMAND}" "-E" "copy_directory" "${sourceDir}" "${outputDir}"
-        COMMAND "${CMAKE_COMMAND}" "-E" "make_directory" "${binariesDir}"
-        COMMAND "${CMAKE_COMMAND}" "-E" "copy" "$<TARGET_FILE:${dlTarget}>" "${binariesDir}/"
-        COMMAND "${CMAKE_COMMAND}" "-E" "copy" "${outputModelDescription}" "${outputDir}/modelDescription.xml"
-        COMMAND "${CMAKE_COMMAND}" "-E" "copy" "${outputUuidHeader}" "${outputDir}/sources/"
-        COMMAND "${CMAKE_COMMAND}" "-DBASE_DIR=${outputDir}" "-DOUTPUT_FILE=${outputFmu}" "-P" "${CMAKE_SOURCE_DIR}/cmake/ZipAll.cmake"
-        DEPENDS ${dlTarget} ${uuidTarget}
+    add_custom_command(OUTPUT "${fmuOutputFile}"
+        COMMAND "${CMAKE_COMMAND}" "-E" "copy_directory" "${fmuSourceDir}" "${fmuStagingDir}"
+        COMMAND "${CMAKE_COMMAND}" "-E" "make_directory" "${fmuStagedBinariesDir}"
+        COMMAND "${CMAKE_COMMAND}" "-E" "copy" "$<TARGET_FILE:${fmuLibraryTarget}>" "${fmuStagedBinariesDir}/"
+        COMMAND "${CMAKE_COMMAND}" "-E" "copy" "${fmuGuidModelDescription}" "${fmuStagingDir}/modelDescription.xml"
+        COMMAND "${CMAKE_COMMAND}" "-E" "copy" "${fmuGuidHeaderFile}" "${fmuStagingDir}/sources/"
+        COMMAND "${CMAKE_COMMAND}" "-DBASE_DIR=${fmuStagingDir}" "-DOUTPUT_FILE=${fmuOutputFile}" "-P" "${CMAKE_SOURCE_DIR}/cmake/ZipAll.cmake"
+        DEPENDS ${fmuLibraryTarget} ${fmuGuidTarget}
         VERBATIM)
-    add_custom_target(${fmuTarget} ALL DEPENDS "${outputFmu}")
+    add_custom_target(${fmuTarget} ALL DEPENDS "${fmuOutputFile}")
 endforeach()
 
 source_group("Metadata" REGULAR_EXPRESSION "modelDescription.xml")
