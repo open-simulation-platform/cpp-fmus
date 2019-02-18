@@ -4,8 +4,8 @@ project(cpp-fmus)
 option(FMU_USE_STATIC_RUNTIME
     "Whether to link the model code against a static C(++) runtime library"
     ON)
-set(FMU_OUTPUT_DIR "${CMAKE_BINARY_DIR}/fmu-contents"
-    CACHE PATH "Where to put the generated FMU contents")
+set(FMU_BUILD_DIR "${CMAKE_BINARY_DIR}/fmu-build"
+    CACHE PATH "Where to put the generated FMU contents before zipping")
 set(FMU_UUID_DIR "${CMAKE_BINARY_DIR}/fmu-uuids"
     CACHE PATH "Where to put the headers containing FMU UUIDs")
 
@@ -68,9 +68,9 @@ set(fmuPlatform "${os}${wordSize}")
 
 # Prepare names for FMU output directories.
 if(CMAKE_CONFIGURATION_TYPES)
-    set(fmuFullOutputDir "${FMU_OUTPUT_DIR}/$<CONFIGURATION>")
+    set(fmuFullBuildDir "${FMU_BUILD_DIR}/$<CONFIGURATION>")
 else()
-    set(fmuFullOutputDir "${FMU_OUTPUT_DIR}")
+    set(fmuFullBuildDir "${FMU_BUILD_DIR}")
 endif()
 
 # Create targets
@@ -82,9 +82,10 @@ foreach(fmuName IN LISTS fmus)
     set(dlTarget "${fmuName}")
     set(uuidTarget "${fmuName}_uuid")
     set(fmuTarget "${fmuName}_fmu")
+    set(outputFmu "${CMAKE_BINARY_DIR}/${fmuName}.fmu")
     set(uuidDir "${FMU_UUID_DIR}/${fmuName}")
     set(sourceDir "${CMAKE_SOURCE_DIR}/src/${fmuName}")
-    set(outputDir "${fmuFullOutputDir}/${fmuName}")
+    set(outputDir "${fmuFullBuildDir}/${fmuName}")
     set(binariesDir "${outputDir}/binaries/${fmuPlatform}")
     set(sourceModelDescription "${sourceDir}/modelDescription.xml")
     set(sourceFiles "${sourceDir}/sources/fmu.cpp")
@@ -124,16 +125,16 @@ foreach(fmuName IN LISTS fmus)
 
     # Target to generate FMU contents
     set(ruleName "${fmuName}-contents")
-    add_custom_command(OUTPUT "${ruleName}"
+    add_custom_command(OUTPUT "${outputFmu}"
         COMMAND "${CMAKE_COMMAND}" "-E" "copy_directory" "${sourceDir}" "${outputDir}"
         COMMAND "${CMAKE_COMMAND}" "-E" "make_directory" "${binariesDir}"
         COMMAND "${CMAKE_COMMAND}" "-E" "copy" "$<TARGET_FILE:${dlTarget}>" "${binariesDir}/"
         COMMAND "${CMAKE_COMMAND}" "-E" "copy" "${outputModelDescription}" "${outputDir}/modelDescription.xml"
         COMMAND "${CMAKE_COMMAND}" "-E" "copy" "${outputUuidHeader}" "${outputDir}/sources/"
+        COMMAND "${CMAKE_COMMAND}" "-DBASE_DIR=${outputDir}" "-DOUTPUT_FILE=${outputFmu}" "-P" "${CMAKE_SOURCE_DIR}/cmake/ZipAll.cmake"
         DEPENDS ${dlTarget} ${uuidTarget}
         VERBATIM)
-    set_property(SOURCE "${ruleName}" PROPERTY SYMBOLIC TRUE)
-    add_custom_target(${fmuTarget} ALL DEPENDS "${ruleName}")
+    add_custom_target(${fmuTarget} ALL DEPENDS "${outputFmu}")
 endforeach()
 
 source_group("Metadata" REGULAR_EXPRESSION "modelDescription.xml")
