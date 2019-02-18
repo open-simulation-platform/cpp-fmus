@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<fmiModelDescription
+    fmiVersion="2.0"
+    modelName="com.open-simulation-platform.null"
+    guid="@FMU_UUID@"
+    description="An FMU that does absolutely nothing. It has one parameter and one input, both of which are ignored, and one calculated parameter and one output, both of which are always zero. It seriously does nothing."
+    author="Lars Tandle Kyllingstad"
+    version="0.1">
+
+    <CoSimulation
+        modelIdentifier="null"
+        canHandleVariableCommunicationStepSize="true" />
+
+    <ModelVariables>
+        <ScalarVariable name="parameter"           valueReference="0" causality="parameter"           variability="tunable" ><Real start="0.0" /></ScalarVariable>
+        <ScalarVariable name="calculatedParameter" valueReference="1" causality="calculatedParameter" variability="tunable" ><Real             /></ScalarVariable>
+        <ScalarVariable name="input"               valueReference="2" causality="input"               variability="discrete"><Real start="0.0" /></ScalarVariable>
+        <ScalarVariable name="output"              valueReference="3" causality="output"              variability="discrete"><Real             /></ScalarVariable>
+    </ModelVariables>
+
+    <ModelStructure>
+        <Outputs>
+            <Unknown index="4" dependencies="" />
+        </Outputs>
+        <InitialUnknowns>
+            <Unknown index="2" dependencies="" />
+        </InitialUnknowns>
+    </ModelStructure>
+
+</fmiModelDescription>
