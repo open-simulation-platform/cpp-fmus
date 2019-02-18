@@ -10,7 +10,10 @@ set(FMU_UUID_DIR "${CMAKE_BINARY_DIR}/fmu-uuids"
     CACHE PATH "Where to put the headers containing FMU UUIDs")
 
 # The names of the FMUs built in this project
-set(fmus "null")
+set(fmus
+    "cpu_grinder"
+    "null"
+)
 
 # ==============================================================================
 # Compiler/platform specific settings

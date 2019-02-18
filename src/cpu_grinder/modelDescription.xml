@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<fmiModelDescription
+    fmiVersion="2.0"
+    modelName="com.open-simulation-platform.cpu_grinder"
+    guid="@FMU_UUID@"
+    description="Does a predefined amount of CPU work per unit simulated time. Useful for benchmarking"
+    author="Lars Tandle Kyllingstad"
+    version="0.1">
+
+    <CoSimulation
+        modelIdentifier="cpu_grinder"
+        canHandleVariableCommunicationStepSize="true" />
+
+    <ModelVariables>
+        <ScalarVariable
+                name="work_per_time"
+                valueReference="0"
+                description="How many work units to do per simulated time unit. This was tuned at some point so that 1 work unit would take 1 ms on the author's machine, but this will of course be heavily machine dependent."
+                causality="parameter"
+                variability="tunable">
+            <Integer start="1000" />
+        </ScalarVariable>
+        <ScalarVariable
+                name="input"
+                valueReference="1"
+                description="An input value that will affect the computations (and hence the output) in an unspecified way."
+                causality="input"
+                variability="discrete">
+            <Integer start="0" />
+        </ScalarVariable>
+        <ScalarVariable
+                name="output"
+                valueReference="2"
+                description="An output value that emerges in an unspecified way from the computations."
+                causality="output"
+                variability="discrete">
+            <Integer />
+        </ScalarVariable>
+    </ModelVariables>
+
+    <ModelStructure>
+        <Outputs>
+            <Unknown index="3" dependencies="1 2" />
+        </Outputs>
+    </ModelStructure>
+</fmiModelDescription>
