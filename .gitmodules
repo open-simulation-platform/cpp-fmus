@@ -1,0 +1,3 @@
+[submodule "cppfmu"]
+	path = cppfmu
+	url = https://github.com/viproma/cppfmu.git
