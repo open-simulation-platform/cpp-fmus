@@ -71,4 +71,4 @@ option:
 Once the various platform- and/or architecture-specific FMUs have been built,
 they can be merged into one using the `MergeFMUs` script like in this example:
 
-    cmake "-DINPUT_FMUS=build32/foo.fmu;build64/foo.fmu;/mnt/winbuild/foo.fmu" -DOUTPUT_FMU=foo.fmu
+    cmake "-DINPUT_FMUS=build32/foo.fmu;build64/foo.fmu;/mnt/winbuild/foo.fmu" -DOUTPUT_FMU=foo.fmu -P tools/MergeFMUs.cmake
