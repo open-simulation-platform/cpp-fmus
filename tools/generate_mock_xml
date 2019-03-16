@@ -1,0 +1,45 @@
+#!/bin/bash
+
+readonly preexistingVariables=3
+readonly variablesPerType=100
+
+generate_modelvariables_xml() {
+    type=$1
+    typeLower=${type,,}
+    start=$2
+    for number in $(seq -w 0 $((variablesPerType-1))); do
+        echo "        <ScalarVariable"
+        echo "                name=\"ignored_${typeLower}_input_${number}\""
+        echo "                valueReference=\"1$number\""
+        echo "                description=\"An input variable which will be ignored\""
+        echo "                causality=\"input\""
+        echo "                variability=\"discrete\">"
+        echo "            <$type start=\"$start\" />"
+        echo "        </ScalarVariable>"
+    done
+    for number in $(seq -w 0 $((variablesPerType-1))); do
+        echo "        <ScalarVariable"
+        echo "                name=\"garbage_${typeLower}_output_${number}\""
+        echo "                valueReference=\"2$number\""
+        echo "                description=\"An output variable that contains some unspecified value\""
+        echo "                causality=\"output\""
+        echo "                variability=\"discrete\">"
+        echo "            <$type />"
+        echo "        </ScalarVariable>"
+    done
+}
+
+echo "======================= <ModelVariables> entries ========================="
+generate_modelvariables_xml Real 0.0
+generate_modelvariables_xml Integer 0
+generate_modelvariables_xml Boolean false
+generate_modelvariables_xml String ""
+
+echo "======================= <ModelStructure> entries ========================="
+for typeIndex in $(seq 0 3); do
+    start=$((preexistingVariables+1+(2*typeIndex+1)*variablesPerType))
+    end=$((start+variablesPerType-1))
+    for index in $(seq $start $end); do
+        echo "            <Unknown index=\"$index\" dependencies=\"\" />"
+    done
+done
