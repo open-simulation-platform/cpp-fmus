@@ -33,9 +33,9 @@ Checking FMU compliance
 -----------------------
 It's always a good idea to use the [FMU Compliance Checker] to verify that FMUs
 are FMI compliant. To activate a set of tests that run the FMU checker on each
-generated FMU, enable `FMU_CHECK_COMPLIANCE` option.  If the Compliance Checker
-is not installed in a standard location, you may also have to specify where to
-find it.  Here is an example:
+generated FMU, enable the `FMU_CHECK_COMPLIANCE` option.  If the FMU Compliance
+Checker is not installed in a standard location, you may also have to specify
+where to find it.  Here is an example:
 
     cmake -DFMU_CHECK_COMPLIANCE=ON -DCMAKE_PREFIX_PATH=/opt/fmu_checker ..
     cmake --build .
