@@ -1,8 +1,8 @@
 C++ FMUs
 ========
 
-This is a repository of FMUs written in plain C++, using the
-[CPPFMU](https://github.com/viproma/cppfmu) framework.
+This is a repository of FMUs written in plain C++ using the [CPPFMU] framework.
+
 
 How to build
 ------------
@@ -27,6 +27,20 @@ code:
 
 Assuming everything went well, the generated FMUs will be located in the `build`
 directory.
+
+
+Checking FMU compliance
+-----------------------
+It's always a good idea to use the FMU Compliance Checker to verify that FMUs
+are FMI compliant. To activate a set of tests that run the FMU checker on each
+generated FMU, enable `FMU_CHECK_COMPLIANCE` option.  If the Compliance Checker
+is not installed in a standard location, you may also have to specify where to
+find it.  Here is an example:
+
+    cmake -DFMU_CHECK_COMPLIANCE=ON -DCMAKE_PREFIX_PATH=/opt/fmu_checker ..
+    cmake --build .
+    ctest
+
 
 Multi-platform FMUs
 -------------------
@@ -72,3 +86,7 @@ Once the various platform- and/or architecture-specific FMUs have been built,
 they can be merged into one using the `MergeFMUs` script like in this example:
 
     cmake "-DINPUT_FMUS=build32/foo.fmu;build64/foo.fmu;/mnt/winbuild/foo.fmu" -DOUTPUT_FMU=foo.fmu -P tools/MergeFMUs.cmake
+
+
+[CPPFMU]: https://github.com/viproma/cppfmu
+[FMU Compliance Checker]: https://github.com/modelica-tools/FMUComplianceChecker

@@ -1,9 +1,14 @@
 cmake_minimum_required(VERSION 3.0)
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+
 project(cpp-fmus)
 
 option(FMU_USE_STATIC_RUNTIME
     "Whether to link the model code against a static C(++) runtime library"
     ON)
+option(FMU_CHECK_COMPLIANCE
+    "Whether to test each FMU with the FMU Compliance checker"
+    OFF)
 set(FMU_OUTPUT_DIR "${CMAKE_BINARY_DIR}"
     CACHE PATH "Where to put the generated FMUs")
 set(FMU_STAGING_DIR "${CMAKE_BINARY_DIR}/fmu-staging"
@@ -54,6 +59,12 @@ endif()
 
 # List CPPFMU sources
 file(GLOB cppfmuSourceFiles "${CMAKE_SOURCE_DIR}/cppfmu/*.?pp")
+
+# Find FMU Compliance Checker
+if(FMU_CHECK_COMPLIANCE)
+    enable_testing()
+    find_package(FMUComplianceChecker REQUIRED)
+endif()
 
 # Detect platform
 if("${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
@@ -140,6 +151,11 @@ foreach(fmuName IN LISTS fmus)
         DEPENDS ${fmuLibraryTarget} ${fmuGuidTarget}
         VERBATIM)
     add_custom_target(${fmuTarget} ALL DEPENDS "${fmuOutputFile}")
+
+    # Test compliance
+    if(FMU_CHECK_COMPLIANCE)
+        add_fmu_compliance_check("${fmuTarget}_compliance" "${fmuOutputFile}")
+    endif()
 endforeach()
 
 source_group("Metadata" REGULAR_EXPRESSION "modelDescription.xml")
