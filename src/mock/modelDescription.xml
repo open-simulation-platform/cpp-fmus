@@ -40,7 +40,7 @@
         <!-- The following entries were generated using tools/generate_mock_xml (and inserted by hand) -->
 
         <ScalarVariable
-                name="ignored_real_input_00"
+                name="ignored_real_input_0"
                 valueReference="100"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -48,7 +48,7 @@
             <Real start="0.0" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_real_input_01"
+                name="ignored_real_input_1"
                 valueReference="101"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -56,7 +56,7 @@
             <Real start="0.0" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_real_input_02"
+                name="ignored_real_input_2"
                 valueReference="102"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -64,7 +64,7 @@
             <Real start="0.0" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_real_input_03"
+                name="ignored_real_input_3"
                 valueReference="103"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -72,7 +72,7 @@
             <Real start="0.0" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_real_input_04"
+                name="ignored_real_input_4"
                 valueReference="104"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -80,7 +80,7 @@
             <Real start="0.0" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_real_input_05"
+                name="ignored_real_input_5"
                 valueReference="105"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -88,7 +88,7 @@
             <Real start="0.0" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_real_input_06"
+                name="ignored_real_input_6"
                 valueReference="106"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -96,7 +96,7 @@
             <Real start="0.0" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_real_input_07"
+                name="ignored_real_input_7"
                 valueReference="107"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -104,7 +104,7 @@
             <Real start="0.0" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_real_input_08"
+                name="ignored_real_input_8"
                 valueReference="108"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -112,7 +112,7 @@
             <Real start="0.0" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_real_input_09"
+                name="ignored_real_input_9"
                 valueReference="109"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -840,7 +840,7 @@
             <Real start="0.0" />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_real_output_00"
+                name="garbage_real_output_0"
                 valueReference="200"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -848,7 +848,7 @@
             <Real />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_real_output_01"
+                name="garbage_real_output_1"
                 valueReference="201"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -856,7 +856,7 @@
             <Real />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_real_output_02"
+                name="garbage_real_output_2"
                 valueReference="202"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -864,7 +864,7 @@
             <Real />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_real_output_03"
+                name="garbage_real_output_3"
                 valueReference="203"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -872,7 +872,7 @@
             <Real />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_real_output_04"
+                name="garbage_real_output_4"
                 valueReference="204"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -880,7 +880,7 @@
             <Real />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_real_output_05"
+                name="garbage_real_output_5"
                 valueReference="205"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -888,7 +888,7 @@
             <Real />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_real_output_06"
+                name="garbage_real_output_6"
                 valueReference="206"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -896,7 +896,7 @@
             <Real />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_real_output_07"
+                name="garbage_real_output_7"
                 valueReference="207"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -904,7 +904,7 @@
             <Real />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_real_output_08"
+                name="garbage_real_output_8"
                 valueReference="208"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -912,7 +912,7 @@
             <Real />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_real_output_09"
+                name="garbage_real_output_9"
                 valueReference="209"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -1640,7 +1640,7 @@
             <Real />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_integer_input_00"
+                name="ignored_integer_input_0"
                 valueReference="100"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -1648,7 +1648,7 @@
             <Integer start="0" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_integer_input_01"
+                name="ignored_integer_input_1"
                 valueReference="101"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -1656,7 +1656,7 @@
             <Integer start="0" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_integer_input_02"
+                name="ignored_integer_input_2"
                 valueReference="102"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -1664,7 +1664,7 @@
             <Integer start="0" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_integer_input_03"
+                name="ignored_integer_input_3"
                 valueReference="103"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -1672,7 +1672,7 @@
             <Integer start="0" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_integer_input_04"
+                name="ignored_integer_input_4"
                 valueReference="104"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -1680,7 +1680,7 @@
             <Integer start="0" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_integer_input_05"
+                name="ignored_integer_input_5"
                 valueReference="105"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -1688,7 +1688,7 @@
             <Integer start="0" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_integer_input_06"
+                name="ignored_integer_input_6"
                 valueReference="106"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -1696,7 +1696,7 @@
             <Integer start="0" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_integer_input_07"
+                name="ignored_integer_input_7"
                 valueReference="107"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -1704,7 +1704,7 @@
             <Integer start="0" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_integer_input_08"
+                name="ignored_integer_input_8"
                 valueReference="108"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -1712,7 +1712,7 @@
             <Integer start="0" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_integer_input_09"
+                name="ignored_integer_input_9"
                 valueReference="109"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -2440,7 +2440,7 @@
             <Integer start="0" />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_integer_output_00"
+                name="garbage_integer_output_0"
                 valueReference="200"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -2448,7 +2448,7 @@
             <Integer />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_integer_output_01"
+                name="garbage_integer_output_1"
                 valueReference="201"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -2456,7 +2456,7 @@
             <Integer />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_integer_output_02"
+                name="garbage_integer_output_2"
                 valueReference="202"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -2464,7 +2464,7 @@
             <Integer />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_integer_output_03"
+                name="garbage_integer_output_3"
                 valueReference="203"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -2472,7 +2472,7 @@
             <Integer />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_integer_output_04"
+                name="garbage_integer_output_4"
                 valueReference="204"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -2480,7 +2480,7 @@
             <Integer />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_integer_output_05"
+                name="garbage_integer_output_5"
                 valueReference="205"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -2488,7 +2488,7 @@
             <Integer />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_integer_output_06"
+                name="garbage_integer_output_6"
                 valueReference="206"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -2496,7 +2496,7 @@
             <Integer />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_integer_output_07"
+                name="garbage_integer_output_7"
                 valueReference="207"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -2504,7 +2504,7 @@
             <Integer />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_integer_output_08"
+                name="garbage_integer_output_8"
                 valueReference="208"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -2512,7 +2512,7 @@
             <Integer />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_integer_output_09"
+                name="garbage_integer_output_9"
                 valueReference="209"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -3240,7 +3240,7 @@
             <Integer />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_boolean_input_00"
+                name="ignored_boolean_input_0"
                 valueReference="100"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -3248,7 +3248,7 @@
             <Boolean start="false" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_boolean_input_01"
+                name="ignored_boolean_input_1"
                 valueReference="101"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -3256,7 +3256,7 @@
             <Boolean start="false" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_boolean_input_02"
+                name="ignored_boolean_input_2"
                 valueReference="102"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -3264,7 +3264,7 @@
             <Boolean start="false" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_boolean_input_03"
+                name="ignored_boolean_input_3"
                 valueReference="103"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -3272,7 +3272,7 @@
             <Boolean start="false" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_boolean_input_04"
+                name="ignored_boolean_input_4"
                 valueReference="104"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -3280,7 +3280,7 @@
             <Boolean start="false" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_boolean_input_05"
+                name="ignored_boolean_input_5"
                 valueReference="105"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -3288,7 +3288,7 @@
             <Boolean start="false" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_boolean_input_06"
+                name="ignored_boolean_input_6"
                 valueReference="106"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -3296,7 +3296,7 @@
             <Boolean start="false" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_boolean_input_07"
+                name="ignored_boolean_input_7"
                 valueReference="107"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -3304,7 +3304,7 @@
             <Boolean start="false" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_boolean_input_08"
+                name="ignored_boolean_input_8"
                 valueReference="108"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -3312,7 +3312,7 @@
             <Boolean start="false" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_boolean_input_09"
+                name="ignored_boolean_input_9"
                 valueReference="109"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -4040,7 +4040,7 @@
             <Boolean start="false" />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_boolean_output_00"
+                name="garbage_boolean_output_0"
                 valueReference="200"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -4048,7 +4048,7 @@
             <Boolean />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_boolean_output_01"
+                name="garbage_boolean_output_1"
                 valueReference="201"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -4056,7 +4056,7 @@
             <Boolean />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_boolean_output_02"
+                name="garbage_boolean_output_2"
                 valueReference="202"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -4064,7 +4064,7 @@
             <Boolean />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_boolean_output_03"
+                name="garbage_boolean_output_3"
                 valueReference="203"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -4072,7 +4072,7 @@
             <Boolean />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_boolean_output_04"
+                name="garbage_boolean_output_4"
                 valueReference="204"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -4080,7 +4080,7 @@
             <Boolean />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_boolean_output_05"
+                name="garbage_boolean_output_5"
                 valueReference="205"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -4088,7 +4088,7 @@
             <Boolean />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_boolean_output_06"
+                name="garbage_boolean_output_6"
                 valueReference="206"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -4096,7 +4096,7 @@
             <Boolean />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_boolean_output_07"
+                name="garbage_boolean_output_7"
                 valueReference="207"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -4104,7 +4104,7 @@
             <Boolean />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_boolean_output_08"
+                name="garbage_boolean_output_8"
                 valueReference="208"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -4112,7 +4112,7 @@
             <Boolean />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_boolean_output_09"
+                name="garbage_boolean_output_9"
                 valueReference="209"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -4840,7 +4840,7 @@
             <Boolean />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_string_input_00"
+                name="ignored_string_input_0"
                 valueReference="100"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -4848,7 +4848,7 @@
             <String start="" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_string_input_01"
+                name="ignored_string_input_1"
                 valueReference="101"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -4856,7 +4856,7 @@
             <String start="" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_string_input_02"
+                name="ignored_string_input_2"
                 valueReference="102"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -4864,7 +4864,7 @@
             <String start="" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_string_input_03"
+                name="ignored_string_input_3"
                 valueReference="103"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -4872,7 +4872,7 @@
             <String start="" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_string_input_04"
+                name="ignored_string_input_4"
                 valueReference="104"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -4880,7 +4880,7 @@
             <String start="" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_string_input_05"
+                name="ignored_string_input_5"
                 valueReference="105"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -4888,7 +4888,7 @@
             <String start="" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_string_input_06"
+                name="ignored_string_input_6"
                 valueReference="106"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -4896,7 +4896,7 @@
             <String start="" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_string_input_07"
+                name="ignored_string_input_7"
                 valueReference="107"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -4904,7 +4904,7 @@
             <String start="" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_string_input_08"
+                name="ignored_string_input_8"
                 valueReference="108"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -4912,7 +4912,7 @@
             <String start="" />
         </ScalarVariable>
         <ScalarVariable
-                name="ignored_string_input_09"
+                name="ignored_string_input_9"
                 valueReference="109"
                 description="An input variable which will be ignored"
                 causality="input"
@@ -5640,7 +5640,7 @@
             <String start="" />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_string_output_00"
+                name="garbage_string_output_0"
                 valueReference="200"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -5648,7 +5648,7 @@
             <String />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_string_output_01"
+                name="garbage_string_output_1"
                 valueReference="201"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -5656,7 +5656,7 @@
             <String />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_string_output_02"
+                name="garbage_string_output_2"
                 valueReference="202"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -5664,7 +5664,7 @@
             <String />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_string_output_03"
+                name="garbage_string_output_3"
                 valueReference="203"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -5672,7 +5672,7 @@
             <String />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_string_output_04"
+                name="garbage_string_output_4"
                 valueReference="204"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -5680,7 +5680,7 @@
             <String />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_string_output_05"
+                name="garbage_string_output_5"
                 valueReference="205"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -5688,7 +5688,7 @@
             <String />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_string_output_06"
+                name="garbage_string_output_6"
                 valueReference="206"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -5696,7 +5696,7 @@
             <String />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_string_output_07"
+                name="garbage_string_output_7"
                 valueReference="207"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -5704,7 +5704,7 @@
             <String />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_string_output_08"
+                name="garbage_string_output_8"
                 valueReference="208"
                 description="An output variable that contains some unspecified value"
                 causality="output"
@@ -5712,7 +5712,7 @@
             <String />
         </ScalarVariable>
         <ScalarVariable
-                name="garbage_string_output_09"
+                name="garbage_string_output_9"
                 valueReference="209"
                 description="An output variable that contains some unspecified value"
                 causality="output"
