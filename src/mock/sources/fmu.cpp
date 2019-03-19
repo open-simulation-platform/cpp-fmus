@@ -61,7 +61,7 @@ public:
             if (vr[i] >= ignoredInputBase && vr[i] < ignoredInputBase+mockVarCount) {
                 value[i] = ignoredRealInputs_[vr[i]-ignoredInputBase];
             } else if (vr[i] >= garbageOutputBase && vr[i] < garbageOutputBase+mockVarCount) {
-                value[i] = 0.0;
+                value[i] = vr[i];
             } else {
                 throw std::logic_error("Invalid value reference");
             }
@@ -101,7 +101,7 @@ public:
             } else if (vr[i] >= ignoredInputBase && vr[i] < ignoredInputBase+mockVarCount) {
                 value[i] = ignoredIntegerInputs_[vr[i]-ignoredInputBase];
             } else if (vr[i] >= garbageOutputBase && vr[i] < garbageOutputBase+mockVarCount) {
-                value[i] = 0;
+                value[i] = vr[i];
             } else {
                 throw std::logic_error("Invalid value reference");
             }
@@ -131,7 +131,7 @@ public:
             if (vr[i] >= ignoredInputBase && vr[i] < ignoredInputBase+mockVarCount) {
                 value[i] = ignoredBooleanInputs_[vr[i]-ignoredInputBase];
             } else if (vr[i] >= garbageOutputBase && vr[i] < garbageOutputBase+mockVarCount) {
-                value[i] = cppfmu::FMIFalse;
+                value[i] = vr[i] % 2;
             } else {
                 throw std::logic_error("Invalid value reference");
             }
@@ -157,11 +157,12 @@ public:
         std::size_t nvr,
         cppfmu::FMIString value[]) const override
     {
+        constexpr cppfmu::FMIString strings[4] = { "foo", "bar", "baz", "Hello World!" };
         for (std::size_t i = 0; i < nvr; ++i) {
             if (vr[i] >= ignoredInputBase && vr[i] < ignoredInputBase+mockVarCount) {
                 value[i] = ignoredStringInputs_[vr[i]-ignoredInputBase].c_str();
             } else if (vr[i] >= garbageOutputBase && vr[i] < garbageOutputBase+mockVarCount) {
-                value[i] = "";
+                value[i] = strings[vr[i] % 4];
             } else {
                 throw std::logic_error("Invalid value reference");
             }
