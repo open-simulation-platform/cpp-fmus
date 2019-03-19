@@ -175,26 +175,18 @@ public:
         cppfmu::FMIBoolean /*newStep*/,
         cppfmu::FMIReal& /*endOfStep*/) override
     {
-        const auto work = static_cast<int>(dt*workPerTime_);
-        cppfmu::FMIInteger temp = input_;
+        constexpr int workUnit = 230000;
+        const auto work = static_cast<int>(workUnit*dt*workPerTime_);
+        volatile cppfmu::FMIInteger temp = input_;
         for (int i = 0; i < work; ++i) {
-            temp = DoWork(temp);
+            ++temp;
+            temp %= 104729;
         }
         output_ = temp;
         return true;
     }
 
 private:
-    int DoWork(int start)
-    {
-        volatile int temp = start;
-        for (int i = 0; i < 230000; ++i) {
-            ++temp;
-            temp %= 104729;
-        }
-        return temp;
-    }
-
     cppfmu::FMIInteger workPerTime_;
     cppfmu::FMIInteger input_;
     cppfmu::FMIInteger output_;
