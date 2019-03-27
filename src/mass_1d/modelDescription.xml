@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<fmiModelDescription
+    fmiVersion="2.0"
+    modelName="com.open-simulation-platform.mass_1d"
+    guid="@FMU_UUID@"
+    description="Point mass with one degree of freedom"
+    author="Severin Simon Sadjina and Lars Tandle Kyllingstad"
+    version="0.4">
+
+    <CoSimulation
+        modelIdentifier="mass_1d"
+        canHandleVariableCommunicationStepSize="true" />
+
+    <ModelVariables>
+        <ScalarVariable name="force1" valueReference="0" description="force 1 on mass" causality="input">
+            <Real start="0.0" />
+        </ScalarVariable>
+        <ScalarVariable name="force2" valueReference="1" description="force 2 on mass" causality="input">
+            <Real start="0.0" />
+        </ScalarVariable>
+        <ScalarVariable name="pos" valueReference="2" description="position" causality="output" initial="exact">
+            <Real start="0.0" />
+        </ScalarVariable>
+        <ScalarVariable name="der(pos)" valueReference="3" description="derivative of position (= velocity)" causality="output" initial="exact">
+            <Real start="0.0" />
+        </ScalarVariable>
+        <ScalarVariable name="vel" valueReference="3" description="velocity" causality="output">
+            <Real />
+        </ScalarVariable>
+        <ScalarVariable name="der(vel)" valueReference="4" description="acceleration" initial="exact">
+            <Real start="0.0" />
+        </ScalarVariable>
+        <ScalarVariable name="mass" valueReference="5" description="mass" causality="parameter" variability="tunable">
+            <Real start="1.0" />
+        </ScalarVariable>
+    </ModelVariables>
+
+    <ModelStructure>
+        <Outputs>
+            <Unknown index="3" />
+            <Unknown index="4" />
+            <Unknown index="5" />
+        </Outputs>
+    </ModelStructure>
+
+</fmiModelDescription>

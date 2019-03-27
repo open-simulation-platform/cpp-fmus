@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<fmiModelDescription
+    fmiVersion="2.0"
+    modelName="com.open-simulation-platform.spring_1d"
+    guid="@FMU_UUID@"
+    description="Linear spring in one dimension"
+    author="Lars Tandle Kyllingstad and Severin Simon Sadjina"
+    version="0.4">
+
+    <CoSimulation
+        modelIdentifier="spring_1d"
+        canHandleVariableCommunicationStepSize="true" />
+
+    <ModelVariables>
+        <ScalarVariable name="pos_a" valueReference="0" description="position of endpoint A" causality="input">
+            <Real start="0.0" />
+        </ScalarVariable>
+        <ScalarVariable name="pos_b" valueReference="1" description="position of endpoint B" causality="input">
+            <Real start="1.0" />
+        </ScalarVariable>
+        <ScalarVariable name="force_a" valueReference="2" description="force exerted by endpoint A" causality="output" initial="exact">
+            <Real start="0.0" />
+        </ScalarVariable>
+        <ScalarVariable name="force_b" valueReference="3" description="force exerted by endpoint B" causality="output" initial="exact">
+            <Real start="0.0" />
+        </ScalarVariable>
+        <ScalarVariable name="length" valueReference="4" description="uncompressed length" causality="parameter" variability="tunable">
+            <Real start="1.0" />
+        </ScalarVariable>
+        <ScalarVariable name="stiffness" valueReference="5" description="stiffness" causality="parameter" variability="tunable">
+            <Real start="1.0" />
+        </ScalarVariable>
+    </ModelVariables>
+
+    <ModelStructure>
+        <Outputs>
+            <Unknown index="3" />
+            <Unknown index="4" />
+        </Outputs>
+    </ModelStructure>
+
+</fmiModelDescription>

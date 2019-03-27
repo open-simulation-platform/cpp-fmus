@@ -18,8 +18,10 @@ set(FMU_UUID_DIR "${CMAKE_BINARY_DIR}/fmu-uuids"
 
 # The names of the FMUs built in this project
 set(fmus
+    "mass_1d"
     "mock"
     "null"
+    "spring_1d"
 )
 
 # ==============================================================================
