@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<fmiModelDescription
+        fmiVersion="2.0"
+        modelName="com.open-simulation-platform.fail"
+        guid="@FMU_UUID@"
+        description="An FMU that does mostly nothing. It has one input, which is ignored until its value is set to true. This will cause a failure on the subsequent call to step."
+        author="Kristoffer Eide"
+        version="0.1">
+
+    <CoSimulation
+            modelIdentifier="fail"
+            canHandleVariableCommunicationStepSize="true"/>
+
+    <ModelVariables>
+        <ScalarVariable name="fail" valueReference="0" causality="input" variability="discrete">
+            <Boolean start="false"/>
+        </ScalarVariable>
+    </ModelVariables>
+
+    <ModelStructure/>
+
+</fmiModelDescription>

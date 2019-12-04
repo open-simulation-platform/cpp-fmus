@@ -18,6 +18,7 @@ set(FMU_UUID_DIR "${CMAKE_BINARY_DIR}/fmu-uuids"
 
 # The names of the FMUs built in this project
 set(fmus
+    "fail"
     "mock"
     "null"
 )
