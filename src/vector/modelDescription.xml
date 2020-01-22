@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<fmiModelDescription
+    fmiVersion="2.0"
+    modelName="com.open-simulation-platform.vector"
+    guid="@FMU_UUID@"
+    description="Has one input and one input, both 3D vectors. Copies the input to the output each step."
+    author="SINTEF Ocean &amp; DNV GL"
+    version="0.1">
+
+    <CoSimulation
+        modelIdentifier="vector"
+        canHandleVariableCommunicationStepSize="true" />
+
+    <ModelVariables>
+        <ScalarVariable name="input[0]"  valueReference="0" causality="input"  variability="discrete"><Real start="0.0" /></ScalarVariable>
+        <ScalarVariable name="input[1]"  valueReference="1" causality="input"  variability="discrete"><Real start="0.0" /></ScalarVariable>
+        <ScalarVariable name="input[2]"  valueReference="2" causality="input"  variability="discrete"><Real start="0.0" /></ScalarVariable>
+        <ScalarVariable name="output[0]" valueReference="3" causality="output" variability="discrete"><Real             /></ScalarVariable>
+        <ScalarVariable name="output[1]" valueReference="4" causality="output" variability="discrete"><Real             /></ScalarVariable>
+        <ScalarVariable name="output[2]" valueReference="5" causality="output" variability="discrete"><Real             /></ScalarVariable>
+    </ModelVariables>
+
+    <ModelStructure>
+        <Outputs>
+            <Unknown index="4" />
+            <Unknown index="5" />
+            <Unknown index="6" />
+        </Outputs>
+    </ModelStructure>
+
+</fmiModelDescription>
